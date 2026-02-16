@@ -1,3 +1,12 @@
+/**
+ * Obsah profilu dynamicky načte ze souboru profile.json
+ * Obsahuje: jméno, dovednosti, zájmy
+ * 
+ * Fetch API s error handlingem a validací dat
+ */
+
+'use strict';
+
 // Načtení dat z profile.json
 fetch('profile.json')
     .then(response => {
@@ -7,32 +16,46 @@ fetch('profile.json')
         return response.json();
     })
     .then(data => {
+        // Validace dat
+        if (!data || typeof data !== 'object') {
+            throw new Error('Neplatná struktura dat');
+        }
+        
         // Vložení jména a titulu
         renderProfile(data);
         
-        // Vložení dovedností
-        renderSkills(data.skills);
+        // Vložení dovedností - validace
+        if (data.skills && Array.isArray(data.skills)) {
+            renderSkills(data.skills);
+        } else {
+            console.warn('⚠️ Skills nejsou dostupné');
+        }
         
-        // Vložení zájmů
-        renderInterests(data.interests);
+        // Vložení zájmů - validace
+        if (data.interests && Array.isArray(data.interests)) {
+            renderInterests(data.interests);
+        } else {
+            console.warn('⚠️ Interests nejsou dostupné');
+        }
     })
     .catch(error => {
-        console.error('Chyba při načítání dat:', error);
+        console.error('❌ Chyba při načítání dat:', error);
         displayError('Chyba při načítání profilu. Prosím, obnovte stránku.');
     });
 
 /**
  * Vykreslí profil (jméno a titul)
+ * @param {Object} data - Data profilu ze souboru
  */
 function renderProfile(data) {
     const nameElement = document.getElementById('profileName');
     const titleElement = document.getElementById('profileTitle');
     
-    if (nameElement) {
+    if (nameElement && data.name) {
         nameElement.textContent = data.name;
     }
     
-    if (titleElement) {
+    if (titleElement && data.title) {
         titleElement.textContent = data.title;
     }
     
@@ -41,12 +64,19 @@ function renderProfile(data) {
 
 /**
  * Vykreslí seznam dovedností
+ * @param {Array} skills - Pole dovedností
  */
 function renderSkills(skills) {
     const skillsList = document.getElementById('skillsList');
     
     if (!skillsList) {
         console.error('❌ Kontejner skillsList nenalezen');
+        return;
+    }
+    
+    if (skills.length === 0) {
+        console.warn('⚠️ Žádné dovednosti k vykreslení');
+        skillsList.innerHTML = '<p>Žádné dovednosti nejsou dostupné</p>';
         return;
     }
     
@@ -62,7 +92,7 @@ function renderSkills(skills) {
         const skillLevel = Math.floor(Math.random() * 36) + 60;
         
         skillItem.innerHTML = `
-            <span class="skill-name">${skill}</span>
+            <span class="skill-name">${String(skill).replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>
             <div class="skill-bar">
                 <div class="skill-progress" style="width: ${skillLevel}%"></div>
             </div>
@@ -76,6 +106,7 @@ function renderSkills(skills) {
 
 /**
  * Vykreslí seznam zájmů
+ * @param {Array} interests - Pole zájmů s objekty
  */
 function renderInterests(interests) {
     const interestsList = document.getElementById('interestsList');
@@ -85,18 +116,30 @@ function renderInterests(interests) {
         return;
     }
     
+    if (interests.length === 0) {
+        console.warn('⚠️ Žádné zájmy k vykreslení');
+        interestsList.innerHTML = '<p>Žádné zájmy nejsou dostupné</p>';
+        return;
+    }
+    
     interestsList.innerHTML = ''; // Vyčistit obsah
     
     // Vytvořit HTML pro každý zájem
     interests.forEach((interest, index) => {
+        // Validace objektu
+        if (!interest.title || !interest.icon) {
+            console.warn('⚠️ Neplatný zájem:', interest);
+            return;
+        }
+        
         const interestCard = document.createElement('div');
         interestCard.className = 'interest-card';
         interestCard.style.animation = `slideIn 0.5s ease ${index * 0.1}s backwards`;
         
         interestCard.innerHTML = `
             <div class="interest-icon">${interest.icon}</div>
-            <h3>${interest.title}</h3>
-            <p>${interest.description}</p>
+            <h3>${String(interest.title).replace(/</g, '&lt;').replace(/>/g, '&gt;')}</h3>
+            <p>${String(interest.description || '').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
         `;
         
         interestsList.appendChild(interestCard);
@@ -106,7 +149,8 @@ function renderInterests(interests) {
 }
 
 /**
- * Zobrazí chybovou zprávu
+ * Zobrazí chybovou zprávu na stránce
+ * @param {string} message - Text chybové zprávy
  */
 function displayError(message) {
     const container = document.querySelector('.container');
@@ -127,7 +171,9 @@ function displayError(message) {
     }
 }
 
-// Smooth scroll pro navigaci
+/**
+ * Smooth scroll pro navigaci
+ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -141,7 +187,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Highlight aktivních nav linků
+/**
+ * Highlight aktivních nav linků při scrollování
+ */
 window.addEventListener('scroll', () => {
     let current = '';
     const sections = document.querySelectorAll('section');
@@ -162,22 +210,9 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Intersection Observer pro animace
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Přidání CSS stylů pro animace
+/**
+ * Přidání CSS stylů pro animace dynamicky
+ */
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideIn {
@@ -211,4 +246,5 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-console.log('✅ App.js načten a připraven');
+console.log('✅ App.js v1.1 - Dynamické načítání profilu aktivní');
+
