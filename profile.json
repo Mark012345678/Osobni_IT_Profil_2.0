@@ -70,7 +70,7 @@
       "description": "Aplikace pro správu úkolů s React a Firebase",
       "technologies": ["React", "Firebase", "Tailwind CSS"],
       "link": "https://github.com/jannovak/task-manager",
-      "image": "https://via.placeholder.com/300x200?text=Task+Manager"
+      "image": "https://www.spspb.cz/wp-content/uploads/2020/06/budova-skoly4k.jpg"
     },
     {
       "id": 3,
@@ -78,7 +78,7 @@
       "description": "REST API pro získávání dat o počasí vytvořená v Python Flask",
       "technologies": ["Python", "Flask", "PostgreSQL", "REST API"],
       "link": "https://github.com/jannovak/weather-api",
-      "image": "https://via.placeholder.com/300x200?text=Weather+API"
+      "image": "https://www.spspb.cz/wp-content/uploads/2020/06/budova-skoly4k.jpg"
     }
   ]
 }
