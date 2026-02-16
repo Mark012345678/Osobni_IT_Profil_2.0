@@ -293,6 +293,11 @@ section {
     transition: width 1s ease;
 }
 
+/* Dynamic skill animations */
+.skill-item {
+    animation: slideIn 0.5s ease forwards;
+}
+
 /* Projects Section */
 .projects {
     background-color: var(--bg-light);
@@ -516,6 +521,17 @@ section {
     from {
         opacity: 0;
         transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
