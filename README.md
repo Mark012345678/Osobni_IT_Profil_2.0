@@ -1,114 +1,121 @@
-# 🎓 Osobní IT Profil 2.0
+# 🎓 Osobní IT Profil 2.0 – Dynamický Web
 
-Moderní a přehledný osobní IT profil web inspirovaný LinkedIn. Představ se jako IT student a ukáž svůj potenciál!
+Moderní a **dynamický** osobní IT profil web inspirovaný LinkedIn. Obsah se načítá ze souboru `profile.json` pomocí JavaScriptu a Fetch API. Weby běží na GitHub Pages.
+
+## 🚀 Nové Funkce ve Verzi 2.0
+
+✨ **Dynamické načítání dat** – Všechny sekce (jméno, dovednosti, zájmy) se načítají z JSON souboru  
+✅ **Fetch API** – Moderní způsob načítání dat bez refreshu stránky  
+🛡️ **Error Handling** – Robustní ošetření chyb a validace dat  
+📱 **Plně Responzivní** – Funguje na všech zařízeních  
+🎨 **Animace** – Smooth transitions a slideIn efekty  
 
 ## 📋 Obsah
 
-- [Vlastnosti](#-vlastnosti)
-- [Struktura](#-struktura)
-- [Jak používat](#-jak-používat)
-- [Úpravy](#-úpravy)
-- [Technologie](#-technologie)
+- [Struktura Projektu](#struktura-projektu)
+- [Jak Spustit](#jak-spustit)
+- [Jak Upravit](#jak-upravit)
+- [Git Workflow](#git-workflow)
+- [Technologie](#technologie)
 
-## ✨ Vlastnosti
-
-- ✅ **Přehledný design** - Čistý a moderní layout s dobrým UX
-- ✅ **Responzivní** - Funguje perfektně na všech zařízeních (desktop, tablet, mobil)
-- ✅ **Interaktivní** - Smooth scroll, animace a dynamické efekty
-- ✅ **Kompletní sekce**:
-  - Hero sekce s profilem
-  - O mně (kdo jsi)
-  - Dovednosti (skills s progress bary)
-  - Projekty (portfolio)
-  - Zájmy (co tě baví)
-  - Cíle (kam směřuješ)
-  - Kontakt
-
-## 📁 Struktura
+## 📁 Struktura Projektu
 
 ```
 Osobni_IT_Profil_2.0/
-├── index.html          # Hlavní stránka
+├── index.html          # HTML struktura s kontejnery pro dynamický obsah
 ├── style.css           # Stylování a responsive design
-├── script.js           # Interaktivita a animace
-└── README.md           # Dokumentace (tento soubor)
+├── app.js              # ✨ Fetch logika + vykreslování dat
+├── profile.json        # ✨ Data pro profil (jméno, skills, interests)
+└── README.md           # Dokumentace
 ```
 
-## 🚀 Jak používat
+## 🚀 Jak Spustit
 
-### Spuštění
-Jednoduše otevři `index.html` v prohlížeči nebo použij live server:
+### Místní Spuštění
 
+**Možnost 1: Python**
 ```bash
-# Pokud máš Python 3
+cd /workspaces/Osobni_IT_Profil_2.0
 python -m http.server 8000
+# Pak otevři http://localhost:8000
+```
 
-# Pokud máš Node.js s http-server
+**Možnost 2: Node.js**
+```bash
 npx http-server
+# Pak otevři http://localhost:8080
 ```
 
-Poté přejdi na `http://localhost:8000`
+**Možnost 3: Live Server (VS Code)**
+- Otevři `index.html`
+- Klikni na "Go Live" v pravém dolním rohu
 
-## ✏️ Úpravy
+### GitHub Pages
 
-### 1. **Osobní informace**
-V `index.html` uprav tyto části:
+Webová stránka je již hostovaná na GitHub Pages:
+- 🌐 [Tvůj profil na GitHub Pages](https://[tvuj-username].github.io/Osobni_IT_Profil_2.0)
 
-```html
-<!-- Hero sekce -->
-<h1 class="hero-title">Tvoje Jméno</h1>
-<p class="hero-subtitle">Tvůj titul | Frontend Developer | Designer</p>
+## ✏️ Jak Upravit
 
-<!-- Profil obrázek -->
-<img src="tvuj-obrazek.jpg" alt="Tvůj profil" class="profile-image">
+### 1. **Změnit Svoje Údaje v `profile.json`**
 
-<!-- O mně -->
-Uprav text v sekci `<section id="about">`
+```json
+{
+  "name": "Tvoje Jméno",
+  "title": "Tvůj Titul | Frontend Developer",
+  "email": "tvuj.email@example.com",
+  "phone": "+420 123 456 789",
+  ...
+}
 ```
 
-### 2. **Dovednosti**
-Uprav skill bary a kategorie:
+### 2. **Přidat/Upravit Dovednosti**
 
-```html
-<div class="skill-item">
-    <span class="skill-name">Tvoje dovednost</span>
-    <div class="skill-bar">
-        <div class="skill-progress" style="width: 85%"></div>
-    </div>
-</div>
+V `profile.json` sekcí `skills`:
+
+```json
+"skills": [
+  "HTML5 & CSS3",
+  "JavaScript (ES6+)",
+  "React",
+  "Python",
+  "Tvoje dovednost"
+]
 ```
 
-Procento `width` představuje úroveň dovednosti (0-100%).
+### 3. **Upravit Zájmy**
 
-### 3. **Projekty**
-V sekci `<section id="projects">` přidej své projekty:
+V `profile.json` sekcí `interests`:
 
-```html
-<div class="project-card">
-    <img src="obrazek-projektu.jpg" alt="Projekt">
-    <div class="project-content">
-        <h3>Název Projektu</h3>
-        <p>Description...</p>
-        <div class="project-tags">
-            <span class="tag">Technology</span>
-        </div>
-        <a href="odkaz-na-projekt.com" class="project-link">Více →</a>
-    </div>
-</div>
+```json
+"interests": [
+  {
+    "id": 1,
+    "title": "Tvůj Zájem",
+    "description": "Popis tvého zájmu",
+    "icon": "💻"
+  }
+]
 ```
 
-### 4. **Kontakt**
-Uprav kontaktní údaje v sekci `<section id="contact">`:
+### 4. **Přidání/Úprava Projektů** (BONUS)
 
-```html
-<a href="mailto:tvuj.email@example.com" class="contact-link">
-    <span class="link-icon">📧</span>
-    <span>tvuj.email@example.com</span>
-</a>
+```json
+"projects": [
+  {
+    "id": 1,
+    "title": "Název Projektu",
+    "description": "Popis",
+    "technologies": ["Tech1", "Tech2"],
+    "link": "https://github.com/...",
+    "image": "url-obrázku"
+  }
+]
 ```
 
-### 5. **Barvy**
-Změň barvy v `style.css` - CSS proměnné:
+### 5. **Změna Barev** (CSS)
+
+V `style.css` uprav CSS proměnné:
 
 ```css
 :root {
@@ -119,61 +126,188 @@ Změň barvy v `style.css` - CSS proměnné:
 }
 ```
 
-### 6. **Přidej svůj obrázek**
-1. Vytvoř složku `assets/` v projektu
-2. Vlož svůj obrázek: `assets/profil.jpg`
-3. Uprav cestu v `index.html`: `src="assets/profil.jpg"`
+### 6. **Přidat Profil Obrázek**
+
+1. Vlož svůj obrázek do složky: `assets/profil.jpg`
+2. V `index.html` uprav:
+```html
+<img src="assets/profil.jpg" alt="Profil" class="profile-image">
+```
+
+## 🔧 Jak Funguje Fetch
+
+### app.js – Dynamické Načítání
+
+```javascript
+fetch('profile.json')
+  .then(response => response.json())
+  .then(data => {
+    renderProfile(data);        // Vloží jméno
+    renderSkills(data.skills);  // Vykresli dovednosti
+    renderInterests(data.interests); // Vykresli zájmy
+  })
+  .catch(error => console.error('Chyba:', error));
+```
+
+### Princip:
+1. ✅ Fetch stáhne `profile.json`
+2. ✅ Parsuje JSON na objekty
+3. ✅ Vykreslí HTML prvky dynamicky
+4. ✅ Ošetří chyby s `.catch()`
+
+## 📊 Git History – Conventional Commits
+
+Projekt používá **Conventional Commits** formát pro čistou historii:
+
+```
+7f2a945 - style: add slideIn animation
+d6140e5 - feat(js): improve error handling and validation
+d500fd9 - chore: add static files
+029513e - feat(js): create app.js with fetch data loading
+b875c43 - feat(html): add containers for dynamic content
+7917537 - feat(data): add profile.json with skills and interests
+```
+
+### Formát Commitů:
+
+```
+type(scope): krátký popis
+
+• feat(data) – Nová data/funkce
+• feat(html) – HTML změny
+• feat(js) – JavaScript funkce
+• style – Vzhled/CSS
+• refactor – Přepsání kódu
+• fix – Oprava chyby
+• chore – Údržba/nástroje
+• docs – Dokumentace
+```
+
+### Git Příkazy:
+
+```bash
+git status                    # Vidět změny
+git add [file]               # Přidat soubor
+git commit -m "feat: popis"  # Commit se zprávou
+git push                     # Nahrát na GitHub
+git log --oneline            # Historie commitů
+```
 
 ## 🛠️ Technologie
 
 | Technologie | Popis |
 |------------|-------|
-| **HTML5** | Sémantická struktura stránky |
-| **CSS3** | Moderní stylování, grid, flexbox, gradients |
-| **JavaScript** | Interaktivita, animace, smooth scroll |
-| **Responsive Design** | Mobile-first přístup |
+| **HTML5** | Sémantická struktura |
+| **CSS3** | Moderní styling, animace |
+| **JavaScript (ES6+)** | Fetch API, DOM manipulace |
+| **JSON** | Struktura dat |
+| **GitHub Pages** | Hosting |
 
-### CSS Funkce
-- ✅ CSS Grid a Flexbox
-- ✅ Gradients a visual effects
-- ✅ CSS animace (slideDown)
-- ✅ Media queries pro responsivitu
+### Použité JS Metody:
 
-### JavaScript Funkce
-- ✅ Smooth scroll navigace
-- ✅ Active nav link highlighting
-- ✅ Intersection Observer pro animace
-- ✅ Skill bar animace
+- `fetch()` – Načtení dat
+- `.then()` – Zpracování Promise
+- `.catch()` – Chybové ošetření
+- `document.querySelector()` – Hledání prvků
+- `document.createElement()` – Vytvoření prvků
+- `.appendChild()` – Přidání prvků do DOM
+- `Array.forEach()` – Iterace přes pole
+- `.textContent` – Vložení textu
+- `.innerHTML` – Vložení HTML
 
-## 📱 Responsivní Body Points
+## 📝 Příklady Customizace
 
-- **Desktop**: Nad 768px - plný layout
-- **Tablet**: 481-768px - adaptovaný grid
-- **Mobil**: Pod 480px - single column
+### Přidat Nový Skill
 
-## 🎨 Design Principy
+```javascript
+// V profile.json
+"skills": [
+  "HTML5 & CSS3",
+  "TypeScript",  // ← Nový skill
+  "Python"
+]
+```
 
-- **Barvy**: Modrá (#0066cc) + Oranžová (#ff6b35)
-- **Typografie**: Segoe UI / Systémové fonty
-- **Spacing**: Konzistentní padding/margin
-- **Animace**: Smooth transitions a hover efekty
+### Změnit Animaci
 
-## 💡 Tipy pro vylepšení
+```css
+/* V style.css */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Např. zvětšit posun */
+    }
+}
+```
 
-1. **Přidej ikony** - Použij Font Awesome nebo emoji
-2. **Přidej více sekcí** - Blog, certifikáty, testimonials
-3. **Dark mode** - Přidej toggle pro tmavý motiv
-4. **Analytics** - Přidej Google Analytics pro sledování návštěv
-5. **SEO** - Uprav meta tagy pro lepší indexaci
-6. **Formulář** - Přidej kontaktní formulář s backend
-7. **Galerie** - Rozšiř sekci projektů o detailní galerii
+### Přidat Error Dialog
 
-## 📧 Kontakt
+```javascript
+// V app.js - already implemented!
+function displayError(message) {
+    // Vypíše červenou zprávu
+}
+```
 
-Máš název, email, GitHub, LinkedIn? Uprav kontaktní informace v sekci Contact!
+## 🐛 Troubleshooting
+
+| Problém | Řešení |
+|---------|--------|
+| "profile.json not found" | Ověř, že je soubor v kořeni projektu |
+| Dovednosti se nenačítají | Otevři DevTools (F12) a zkontroluj konzoli |
+| Chybí ikony v zájmech | Ověř, že máš emojis v JSON (`"icon": "💻"`) |
+| CORS chyba | Usar server (ne `file://` protokol) |
+
+## 📱 Responsive Body Points
+
+- **Desktop** (>768px) – Plný layout
+- **Tablet** (481-768px) – Adaptovaný grid
+- **Mobil** (<480px) – Single column
+
+## 🚀 Pokročilé Úpravy
+
+### Přidej Projekty Sekci
+
+V `index.html` přidej:
+```html
+<section id="projects" class="projects">
+    <div id="projectsList"></div>
+</section>
+```
+
+V `app.js` přidej:
+```javascript
+if (data.projects && Array.isArray(data.projects)) {
+    renderProjects(data.projects);
+}
+```
+
+### Přidej Dark Mode
+
+```javascript
+document.body.classList.toggle('dark-mode');
+```
+
+```css
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+```
+
+## 📚 Další Zdroje
+
+- [MDN Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [JSON Format](https://www.json.org/)
+- [Conventional Commits](https://www.conventionalcommits.org/)
+- [GitHub Pages Docs](https://pages.github.com/)
+
+## 📧 Příspěvek & Feedback
+
+Pokud máš návrhy na vylepšení, nedvoj se a kontaktuj mě! 
 
 ---
 
-**Vytvořeno**: 2026
-**Verze**: 2.0
-**Licence**: MIT (volně použitelné)
+**Verze**: 2.0 – Dynamická  
+**Poslední Aktualizace**: 16. února 2026  
+**Stav**: ✅ Prêt na GitHub Pages
