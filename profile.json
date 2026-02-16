@@ -1,0 +1,84 @@
+{
+  "name": "Jan Novák",
+  "title": "IT Student | Fullstack Developer",
+  "email": "jan.novak@example.com",
+  "phone": "+420 778 123 456",
+  "github": "https://github.com/jannovak",
+  "linkedin": "https://linkedin.com/in/jannovak",
+  "skills": [
+    "HTML5 & CSS3",
+    "JavaScript (ES6+)",
+    "React",
+    "Python",
+    "Node.js",
+    "SQL & MongoDB",
+    "Git & GitHub",
+    "Responsive Design",
+    "REST APIs",
+    "Docker"
+  ],
+  "interests": [
+    {
+      "id": 1,
+      "title": "Vývoj Webových Aplikací",
+      "description": "Vytváření moderních, interaktivních webů s React a JavaScript",
+      "icon": "💻"
+    },
+    {
+      "id": 2,
+      "title": "UI/UX Design",
+      "description": "Tvorba krásných a intuitivních uživatelských rozhraní",
+      "icon": "🎨"
+    },
+    {
+      "id": 3,
+      "title": "Učení se novým technologiím",
+      "description": "Kontinuální rozvoj a experimentování s novými nástroji",
+      "icon": "📚"
+    },
+    {
+      "id": 4,
+      "title": "Open Source",
+      "description": "Přispívání k open source projektům a sdílení znalostí",
+      "icon": "🌍"
+    },
+    {
+      "id": 5,
+      "title": "Cloud & DevOps",
+      "description": "Práce s Docker, Kubernetes a cloud platformami",
+      "icon": "☁️"
+    },
+    {
+      "id": 6,
+      "title": "Startup projekty",
+      "description": "Budování produktů od nuly a pracování na startup ideích",
+      "icon": "🚀"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Osobní IT Profil",
+      "description": "Responzivní webová stránka s dynamickým načítáním dat ze JSON",
+      "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
+      "link": "https://github.com/jannovak/osobni-it-profil",
+      "image": "https://via.placeholder.com/300x200?text=IT+Profil"
+    },
+    {
+      "id": 2,
+      "title": "Task Manager App",
+      "description": "Aplikace pro správu úkolů s React a Firebase",
+      "technologies": ["React", "Firebase", "Tailwind CSS"],
+      "link": "https://github.com/jannovak/task-manager",
+      "image": "https://via.placeholder.com/300x200?text=Task+Manager"
+    },
+    {
+      "id": 3,
+      "title": "Weather API",
+      "description": "REST API pro získávání dat o počasí vytvořená v Python Flask",
+      "technologies": ["Python", "Flask", "PostgreSQL", "REST API"],
+      "link": "https://github.com/jannovak/weather-api",
+      "image": "https://via.placeholder.com/300x200?text=Weather+API"
+    }
+  ]
+}
