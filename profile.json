@@ -62,7 +62,7 @@
       "description": "Responzivní webová stránka s dynamickým načítáním dat ze JSON",
       "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
       "link": "https://github.com/jannovak/osobni-it-profil",
-      "image": "https://www.spspb.cz/wp-content/uploads/2020/06/budova-skoly4k.jpg"
+      "image": "https://www.spspb.cz/wp-content/uploads/2020/04/budova-skoly_3-1-1536x386.jpg"
     },
     {
       "id": 2,
@@ -70,7 +70,7 @@
       "description": "Aplikace pro správu úkolů s React a Firebase",
       "technologies": ["React", "Firebase", "Tailwind CSS"],
       "link": "https://github.com/jannovak/task-manager",
-      "image": "https://www.spspb.cz/wp-content/uploads/2020/06/budova-skoly4k.jpg"
+      "image": "https://www.spspb.cz/wp-content/uploads/2020/04/budova-skoly_3-1-1536x386.jpg"
     },
     {
       "id": 3,
@@ -78,7 +78,7 @@
       "description": "REST API pro získávání dat o počasí vytvořená v Python Flask",
       "technologies": ["Python", "Flask", "PostgreSQL", "REST API"],
       "link": "https://github.com/jannovak/weather-api",
-      "image": "https://www.spspb.cz/wp-content/uploads/2020/06/budova-skoly4k.jpg"
+      "image": "https://www.spspb.cz/wp-content/uploads/2020/04/budova-skoly_3-1-1536x386.jpg"
     }
   ]
 }
